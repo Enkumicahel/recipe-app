@@ -93,7 +93,7 @@ function Home(props) {
         {recipes.map((e) => (
           <RecipeCard
           key={e._id} 
-          title={e.title}
+          title={e.name}
           description={e.description}
           category={e.category}
           />
