@@ -18,7 +18,6 @@ import {
   Input,
 } from "reactstrap";
 
-
 function Header(props) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
@@ -37,13 +36,7 @@ function Header(props) {
     setDropdownOpen(!dropdownOpen);
   };
   const getBrand = () => {
-    let brandName = "Default Brand";
-    // routes.map((prop, key) => {
-    //   if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
-    //     brandName = prop.name;
-    //   }
-    //   return null;
-    // });
+    let brandName = "Recipe App";
     return brandName;
   };
   const openSidebar = () => {
@@ -72,20 +65,7 @@ function Header(props) {
   }, [location]);
   return (
     // add or remove classes depending if we are on full-screen-maps page or not
-    <Navbar
-      color={
-        props.location.pathname.indexOf("full-screen-maps") !== -1
-          ? "dark"
-          : color
-      }
-      expand="lg"
-      className={
-        props.location.pathname.indexOf("full-screen-maps") !== -1
-          ? "navbar-absolute fixed-top"
-          : "navbar-absolute fixed-top " +
-            (color === "transparent" ? "navbar-transparent " : "")
-      }
-    >
+    <Navbar color={"dark"} expand="lg" className={"navbar-absolute fixed-top"}>
       <Container fluid>
         <div className="navbar-wrapper">
           <div className="navbar-toggle">

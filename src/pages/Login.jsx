@@ -30,11 +30,12 @@ function Login({ onLogin, setToken }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
+    const data = await loginUser({
       email,
       password
     });
-    setToken(token);
+    console.log(data.token)
+    setToken(data.token);
   }
 
   return (

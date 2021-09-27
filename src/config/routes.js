@@ -1,9 +1,11 @@
 // Pages
 import Home from "../pages/Home";
 
-export const ROUTES = [
+const ROUTES = [
   {
     path: "/",
     component: Home,
   },
 ];
+
+export default ROUTES;
