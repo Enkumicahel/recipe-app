@@ -100,8 +100,8 @@ function Header(props) {
           </form>
           <Nav navbar>
             <NavItem>
-              <Link to="#pablo" className="nav-link btn-magnify">
-                <i className="nc-icon nc-layout-11" />
+              <Link to="/add_recipe" className="nav-link btn-plus">
+                <p className="h1">+</p>
                 <p>
                   <span className="d-lg-none d-md-block">Stats</span>
                 </p>
@@ -113,25 +113,17 @@ function Header(props) {
               toggle={(e) => dropdownToggle(e)}
             >
               <DropdownToggle caret nav>
-                <i className="nc-icon nc-bell-55" />
+                <i className="nc-icon nc-settings-gear-65" />
                 <p>
                   <span className="d-lg-none d-md-block">Some Actions</span>
                 </p>
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem tag="a">Action</DropdownItem>
-                <DropdownItem tag="a">Another Action</DropdownItem>
-                <DropdownItem tag="a">Something else here</DropdownItem>
+                <DropdownItem tag="a">
+                  <Link to="/register">Logout</Link>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-            <NavItem>
-              <Link to="#pablo" className="nav-link btn-rotate">
-                <i className="nc-icon nc-settings-gear-65" />
-                <p>
-                  <span className="d-lg-none d-md-block">Account</span>
-                </p>
-              </Link>
-            </NavItem>
           </Nav>
         </Collapse>
       </Container>

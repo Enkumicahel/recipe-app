@@ -20,8 +20,8 @@ import React from "react";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch, useLocation } from "react-router-dom";
+import { Card, CardImgOverlay, CardTitle, CardText, CardImg, CardGroup } from 'reactstrap';
 
-import Navbar from "../components/Navbars/Navbar.js";
 import Footer from "../components/Footer/Footer.js";
 import Sidebar from "../components/Sidebar/Sidebar.js";
 import RecipeCard from "../components/RecipeCard/RecipeCard.js";
@@ -59,10 +59,10 @@ function Home(props) {
       
       
   },[]);
-  React.useEffect(() => {
-    mainPanel.current.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-  }, [location]);
+  // React.useEffect(() => {
+  //   mainPanel.current.scrollTop = 0;
+  //   document.scrollingElement.scrollTop = 0;
+  // }, [location]);
   const handleActiveClick = (color) => {
     setActiveColor(color);
   };
@@ -71,14 +71,27 @@ function Home(props) {
   };
   return (
     <div className="wrapper">
-      <Sidebar
-        {...props}
-        routes={ROUTES}
-        bgColor={backgroundColor}
-        activeColor={activeColor}
-      />
-      <div className="main-panel" ref={mainPanel}>
-        <Navbar {...props} />
+      <div className="main-panel" >
+        <Card className="bg-dark text-white">
+            <CardImg 
+            src="https://previews.123rf.com/images/krisckam/krisckam1705/krisckam170500022/78596281-international-mix-set-foods-top-view-on-table.jpg" 
+            alt="..."
+            style={{height: '470px', width: '100%', display: 'block'}}
+            />
+            <CardImgOverlay
+            style={{
+              position: 'absolute',
+              // top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              padding: '1.25rem',
+              borderRadius: '5.25rem',
+            }}>
+                <CardTitle className="h1 text-center">Recipe App</CardTitle>
+                <CardText className="h6 text-center">Let’s rediscover some of our all-time favorite foods for a cozy fall!</CardText>
+            </CardImgOverlay>
+        </Card>
         <Switch>
           {ROUTES.map((prop, key) => {
             return (
@@ -90,6 +103,7 @@ function Home(props) {
             );
           })}
         </Switch>
+        <CardGroup style={{alignContent:"center", padding:'0px'}}>
         {recipes.map((e) => (
           <RecipeCard
           key={e._id} 
@@ -99,6 +113,7 @@ function Home(props) {
           />
           )
         )}
+        </CardGroup>
         <Footer fluid />
       </div>
     </div>
