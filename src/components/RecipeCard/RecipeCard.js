@@ -6,25 +6,28 @@ import {
   CardText,
   CardLink,
   CardImg,
+  Col,
 } from "reactstrap";
 
 function RecipeCard(props) {
   return (
-    <div>
-      <Card style={{ padding: 30, width: "30rem" }} className="text-center">
+    <Col md="4" className="p-3">
+      <Card className="text-center">
         <CardImg
-          top
           src="https://www.sidechef.com/article/3baf5e87-fa83-4730-a087-ab08fe2554e1.jpg?d=1200x560"
           alt="..."
+          className="img-fluid"
           style={{
-            alignSelf: "center",
-            width: "100%",
-            borderRadius: "0.35rem",
+            borderRadius: 0,
+            borderTopLeftRadius: 12,
+            borderTopRightRadius: 12,
           }}
         />
         <CardBody>
           <div className="info">
-            <h4 className="info-title">{props.title}</h4>
+            <h4 style={{ color: "deeppink" }} className="info-title">
+              {props.title}
+            </h4>
             <p>
               <small
                 className="text-muted"
@@ -33,7 +36,7 @@ function RecipeCard(props) {
                 {props.category}
               </small>
             </p>
-            <p>{props.description}</p>
+            <p>{props.description.substring(0, 50)}...</p>
           </div>
 
           <CardLink href="/#/" style={{ textDecoration: "none" }}>
@@ -44,7 +47,7 @@ function RecipeCard(props) {
           </CardLink>
         </CardBody>
       </Card>
-    </div>
+    </Col>
   );
 }
 

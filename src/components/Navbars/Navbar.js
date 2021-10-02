@@ -18,7 +18,7 @@ import {
   Input,
 } from "reactstrap";
 
-function Header(props) {
+function Header({ logout }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const [color, setColor] = React.useState("transparent");
@@ -65,7 +65,11 @@ function Header(props) {
   }, [location]);
   return (
     // add or remove classes depending if we are on full-screen-maps page or not
-    <Navbar color={"dark"} expand="lg" className={"navbar-absolute fixed-top"}>
+    <Navbar
+      color="dark"
+      expand="lg"
+      className="navbar-absolute navbar-fixed fixed-top"
+    >
       <Container fluid>
         <div className="navbar-wrapper">
           <div className="navbar-toggle">
@@ -80,7 +84,11 @@ function Header(props) {
               <span className="navbar-toggler-bar bar3" />
             </button>
           </div>
-          <NavbarBrand href="/">{getBrand()}</NavbarBrand>
+          <NavbarBrand>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              {getBrand()}
+            </Link>
+          </NavbarBrand>
         </div>
         <NavbarToggler onClick={toggle}>
           <span className="navbar-toggler-bar navbar-kebab" />
@@ -89,7 +97,7 @@ function Header(props) {
         </NavbarToggler>
         <Collapse isOpen={isOpen} navbar className="justify-content-end">
           <form>
-            <InputGroup className="no-border">
+            <InputGroup className="no-border form-control">
               <Input placeholder="Search..." />
               <InputGroupAddon addonType="append">
                 <InputGroupText>
@@ -101,10 +109,7 @@ function Header(props) {
           <Nav navbar>
             <NavItem>
               <Link to="/add_recipe" className="nav-link btn-plus">
-                <p className="h1">+</p>
-                <p>
-                  <span className="d-lg-none d-md-block">Stats</span>
-                </p>
+                <i className="nc-icon nc-simple-add"></i>
               </Link>
             </NavItem>
             <Dropdown
@@ -119,8 +124,8 @@ function Header(props) {
                 </p>
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem tag="a">
-                  <Link to="/register">Logout</Link>
+                <DropdownItem tag="a" onClick={logout}>
+                  Logout
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>

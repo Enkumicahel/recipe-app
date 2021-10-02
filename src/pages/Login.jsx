@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+// import { useHistory } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -13,29 +15,22 @@ import {
   Col,
 } from "reactstrap";
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:4001/user/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
+import AuthService  from '../services/auth.service'
 
-function Login({ onLogin, setToken }) {
-  const [email, setEmail] = useState(0);
-  const [password, setPassword] = useState(0);
+function Login({ onLogin }) {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const data = await loginUser({
+    const data = await AuthService.login(
       email,
       password
-    });
-    console.log(data.token)
-    setToken(data.token);
+    );
+    console.log('[LOGIN] ', data.token)
+    if(data.token){
+      onLogin()
+    }
   }
 
   return (
@@ -72,9 +67,15 @@ function Login({ onLogin, setToken }) {
                     className="btn-round"
                     color="primary"
                     type="submit"
-                    onClick={onLogin}
                   >
                     Sign In
+                  </Button>
+                  <Button
+                    className="btn-round"
+                    // color="primary"
+                    href='/register'
+                  >
+                    Sign Up
                   </Button>
                 </div>
               </Row>
@@ -84,10 +85,6 @@ function Login({ onLogin, setToken }) {
       </Col>
     </Row>
   );
-}
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
 }
 
 export default Login;

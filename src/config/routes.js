@@ -1,6 +1,7 @@
 // Pages
 import Home from "../pages/Home";
 import AddRecipe from "../pages/AddRecipe";
+import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 
 const ROUTES = [
@@ -11,10 +12,6 @@ const ROUTES = [
   {
     path: "/add_recipe",
     component: AddRecipe,
-  },
-  {
-    path: "/register",
-    component: Registration,
   },
 ];
 
